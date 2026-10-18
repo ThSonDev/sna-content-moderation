@@ -1,0 +1,8 @@
+# Colab already has all of these. Locally: pip install -r requirements.txt (add jupyter if needed)
+torch>=2.2
+numpy>=1.26
+scipy>=1.11
+scikit-learn>=1.4
+pandas>=2.0
+networkx>=3.2
+matplotlib>=3.8

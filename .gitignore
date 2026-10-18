@@ -1,0 +1,30 @@
+# ---- Python ----
+__pycache__/
+*.py[cod]
+*.egg-info/
+build/
+dist/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# ---- Environments ----
+.venv/
+venv/
+env/
+.env
+
+# ---- Jupyter ----
+.ipynb_checkpoints/
+
+# ---- Editors / OS ----
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# ---- Project ----
+# data is downloaded by the notebook, never committed (CC BY-NC-ND)
+data/
+*.pt
+*.zip
