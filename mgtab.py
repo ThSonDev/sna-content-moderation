@@ -52,7 +52,8 @@ def evaluate(y, score, threshold):
     order = np.argsort(-score)
     return {"pr_auc": average_precision_score(y, score), "roc_auc": roc_auc_score(y, score),
             "macro_f1": f1_score(y, score >= threshold, average="macro"),
-            "p@100": float(y[order[:100]].mean()), "p@200": float(y[order[:200]].mean())}
+            "p@100": float(y[order[:100]].mean()), "p@200": float(y[order[:200]].mean()),
+            "threshold": float(threshold)}  # logged so the final test run reuses the same value
 
 
 if __name__ == "__main__":  # self-check against the numbers in the proposal
