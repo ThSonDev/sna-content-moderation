@@ -1,5 +1,6 @@
-# Colab already has all of these. Locally: pip install -r requirements.txt (add jupyter if needed)
-torch>=2.2
+# Local and Colab: pip install -r requirements.txt && python install_pyg.py (locally, add jupyter if needed)
+torch>=2.8,<2.15
+torch_geometric>=2.6
 numpy>=1.26
 scipy>=1.11
 scikit-learn>=1.4

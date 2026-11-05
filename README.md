@@ -22,6 +22,7 @@ git clone https://github.com/ThSonDev/sna-content-moderation.git
 cd sna-content-moderation
 python -m venv .venv && source .venv/bin/activate
 pip install -r requirements.txt jupyter
+python install_pyg.py   # pyg-lib for Node2Vec; matches your torch build
 ```
 
 ## Files
@@ -29,7 +30,8 @@ pip install -r requirements.txt jupyter
 | File | What it is |
 |---|---|
 | `mgtab.py` | Shared code: `load`, `relations` (cleaned), `split` (fixed 70/15/15), `best_threshold`, `evaluate` |
-| `features.py` | G-struct: 32 graph features per account (`struct_features`), cached in `data/` |
+| `features.py` | Feature groups P, C, T, G for fair comparisons (`feature_groups`); old 32-column G-struct (`struct_features`); cached in `data/` |
+| `install_pyg.py` | Installs the pyg-lib build that matches your torch (Node2Vec needs it) |
 | `notebooks/template.ipynb` | Copy this for your task: setup, data download and loading are done |
 | `notebooks/p1.ipynb` | Prototype P1 Fusion-LR (P + T + G-struct) and the A2 check, validation results |
 | `results/` | Small result tables (CSV) |
