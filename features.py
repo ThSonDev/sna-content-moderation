@@ -47,6 +47,15 @@ def struct_features(X, rel, cache="data/g_struct.npz"):
     return F, names
 
 
+def feature_groups(X, rel, cache="data/g_struct.npz"):
+    """Separate groups for fair comparisons. Returns ({"P": profile 16, "C": profile counts 4, "T": tweets 768,
+    "G": computed graph 28}, names of the G columns). Standardize P, C and G with train statistics only."""
+    F, names = struct_features(X, rel, cache)
+    k = len(PROFILE_COUNTS)
+    assert all(str(c).startswith("profile_") for c in names[:k])
+    return {"P": X[:, PROFILE_ONLY], "C": F[:, :k], "T": X[:, 20:], "G": F[:, k:]}, list(names[k:])
+
+
 if __name__ == "__main__":  # self-check: shape, no NaN, degrees match the cleaned edge counts
     from mgtab import load, relations
     X, y, _, E, T, _ = load()
@@ -55,4 +64,7 @@ if __name__ == "__main__":  # self-check: shape, no NaN, degrees match the clean
     assert F.shape == (len(y), 32) and not np.isnan(F).any(), F.shape
     assert np.expm1(F[:, names.index("follow_in_degree")]).round().sum() == len(rel["follow"][0])
     assert np.expm1(F[:, names.index("url_degree")]).round().sum() == 2 * len(rel["url"][0])
+    groups, g_names = feature_groups(X, rel)
+    assert {k: v.shape[1] for k, v in groups.items()} == {"P": 16, "C": 4, "T": 768, "G": 28} and len(g_names) == 28
+    assert np.allclose(groups["C"], X[:, list(PROFILE_COUNTS)])
     print("ok", F.shape, names)

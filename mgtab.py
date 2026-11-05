@@ -1,7 +1,7 @@
 """Shared MGTAB helpers: load, clean relations, fixed split, evaluate. Import this in every notebook."""
 import numpy as np
 import torch
-from sklearn.metrics import average_precision_score, f1_score, roc_auc_score
+from sklearn.metrics import accuracy_score, average_precision_score, f1_score, roc_auc_score
 from sklearn.model_selection import train_test_split
 
 DATA = "data/MGTAB"
@@ -52,6 +52,7 @@ def evaluate(y, score, threshold):
     order = np.argsort(-score)
     return {"pr_auc": average_precision_score(y, score), "roc_auc": roc_auc_score(y, score),
             "macro_f1": f1_score(y, score >= threshold, average="macro"),
+            "accuracy": accuracy_score(y, score >= threshold),  # published MGTAB results report accuracy
             "p@100": float(y[order[:100]].mean()), "p@200": float(y[order[:200]].mean()),
             "threshold": float(threshold)}  # logged so the final test run reuses the same value
 
@@ -63,4 +64,5 @@ if __name__ == "__main__":  # self-check against the numbers in the proposal
     assert [len(rel[r][0]) for r in RELATIONS[:4]] == [425863, 110868, 22327, 20901]
     tr, va, te = split(yb)
     assert (len(tr), len(va), len(te)) == (7139, 1530, 1530) and yb[te].sum() == 412
+    assert evaluate(np.array([0, 0, 1, 1]), np.array([.1, .9, .8, .7]), 0.5)["accuracy"] == 0.75
     print("ok", {r: len(v[0]) for r, v in rel.items()})
