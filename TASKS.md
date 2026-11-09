@@ -15,18 +15,22 @@ guide its design.
 |---|---|---|---|---|
 | **Sơn** | **1. PyTorch environment for the team.** PyTorch Geometric and pyg-lib (Node2Vec needs it) in the setup. Tested locally; the Colab test is still to do. | None | `requirements.txt`, `install_pyg.py`, `notebooks/template.ipynb`, `README.md` | Done |
 | | **2. Shared code.** `feature_groups` gives P, C (4 profile counts), T and G (28 computed graph features) separately. `evaluate` also returns accuracy. | None | `features.py`, `mgtab.py` | Done |
-| | **3. Models.** Add Node2Vec (G-emb) to P1. | Đại (Node2Vec code) | `notebooks/p1.ipynb`, `results/` | |
-| | **4. Models.** P2 RGCN and its MLP control (A3). | Minh (ablation, error analysis) | `notebooks/p2.ipynb`, `results/` | |
-| **Đại** | **Finish all baselines:** fair baseline, graph-only without counts, B2b Node2Vec, B1 MLP, new model names. | Sơn (task 1) | `embeddings.py`, `notebooks/baselines.ipynb`, `results/baselines.csv` | |
-| **Minh** | **Relation ablation (LR):** each of the 6 relations alone and left out. | None | `notebooks/relations.ipynb`, `results/relations.csv` | |
-| | **Error analysis:** content-only vs. graph-only vs. fusion. | Đại (fair baseline settings) | `notebooks/errors.ipynb`, short findings for the slides | |
-| **Phúc** | **Reproduce published methods:** official RGT, then BotHP, then the best one on our split. | None (own Colab setup) | `notebooks/reproduce.ipynb`, `results/reproduce.csv` | |
-| **Tuấn** | **Literature table:** check published MGTAB results in the source papers. | None | `notes/sota-mgtab.md` | |
+| | **3. Models.** Add Node2Vec (G-emb) to P1. | Đại (Node2Vec code) | `notebooks/p1.ipynb`, `results/`, etc. | |
+| | **4. Models.** P2 RGCN and its MLP control (A3). | Minh (ablation, error analysis) | `notebooks/p2.ipynb`, `results/`, etc. | |
+| **Đại** | **Finish all baselines:** fair baseline, graph-only without counts, B2b Node2Vec, B1 MLP, new model names. | Sơn (task 1) | `embeddings.py`, `notebooks/baselines.ipynb`, `results/baselines.csv`, etc. | |
+| **Minh** | **Relation ablation (LR):** each of the 6 relations alone and left out. | None | `notebooks/relations.ipynb`, `results/relations.csv`, etc. | |
+| | **Error analysis:** content-only vs. graph-only vs. fusion. | Đại (fair baseline settings) | `notebooks/errors.ipynb`, short findings for the slides, etc. | |
+| **Phúc** | **Reproduce published methods:** official RGT, then BotHP, then the best one on our split. | None (own Colab setup) | `notebooks/reproduce.ipynb`, `results/reproduce.csv`, related notebooks and run logs, etc. | |
+| **Tuấn** | **Literature table:** check published MGTAB results in the source papers. | None | `notes/sota-mgtab.md`, etc. | |
 | | **Slides for Progress Review 2**, with every number verified. | Đại, Minh, Phúc, Sơn, Tuấn (literature table) | slides | |
 | **Quyền** | **Document:** update the midterm review. | Đại, Minh, Phúc, Sơn, Tuấn (literature table) | `midterm-review-2.docx` | |
 
 **Everyone who codes:** copy `notebooks/template.ipynb` to your output notebook, run the setup cells, and write your
 code below them. See `notebooks/p1.ipynb` for a working example.
+
+**Push everything your results depend on**, not only the files listed: extra notebooks, run logs, small result
+files, and notes on anything unexpected. Keep cell outputs so others can check the numbers without rerunning.
+Never push the MGTAB data. Write notes in the repo in English.
 
 ## Đại: finish all baselines
 
