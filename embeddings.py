@@ -5,6 +5,9 @@ This is necessary because the current pyg-lib backend only
 supports uniform random walks.
 """
 
+import os
+import time
+
 import numpy as np
 import torch
 from numba import njit
@@ -185,10 +188,6 @@ def make_node2vec(
     return enable_biased_walks(model, seed=seed)
 
 
-import os
-import time
-
-
 def train_node2vec(
     edge_index,
     num_nodes,
@@ -316,3 +315,22 @@ def train_node2vec(
     )
 
     return embeddings, history
+
+
+if __name__ == "__main__":  # self-check: p and q really change the walks (triangle 0-1-2, leaves 3-6 on node 0)
+    from torch_geometric.index import index2ptr
+    from torch_geometric.utils import sort_edge_index
+
+    ei = torch.tensor([[0, 1, 0, 2, 1, 2, 0, 3, 0, 4, 0, 5, 0, 6], [1, 0, 2, 0, 2, 1, 3, 0, 4, 0, 5, 0, 6, 0]])
+    r, c = sort_edge_index(ei)
+    rowptr, col = index2ptr(r, 7).numpy().astype(np.int64), c.numpy().astype(np.int64)
+    starts = np.full(20000, 1, dtype=np.int64)
+    _seed_walks(0)
+
+    def back(p, q):  # share of walks 1 -> x -> 1
+        w = biased_walks(rowptr, col, starts, 2, p, q)
+        return (w[:, 2] == w[:, 0]).mean()
+
+    assert back(0.05, 1) > back(1, 1) + 0.3 > back(20, 1) + 0.3
+    assert merged_edge_index({"a": (np.array([0, 0, 1]), np.array([1, 1, 1]))}, 2).tolist() == [[0, 1], [1, 0]]
+    print("ok")
