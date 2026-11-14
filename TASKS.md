@@ -17,10 +17,10 @@ guide its design.
 | | **2. Shared code.** `feature_groups` gives P, C (4 profile counts), T and G (28 computed graph features) separately. `evaluate` also returns accuracy. | None | `features.py`, `mgtab.py` | Done |
 | | **3. Models.** Add Node2Vec (G-emb) to P1. | Đại (Node2Vec code) | `notebooks/p1.ipynb`, `results/`, etc. | |
 | | **4. Models.** P2 RGCN and its MLP control (A3). | Minh (ablation, error analysis) | `notebooks/p2.ipynb`, `results/`, etc. | |
-| **Đại** | **Finish all baselines:** fair baseline, graph-only without counts, B2b Node2Vec, B1 MLP, new model names. | Sơn (task 1) | `embeddings.py`, `notebooks/baselines.ipynb`, `results/baselines.csv`, etc. | |
+| **Đại** | **Finish all baselines:** fair baseline, graph-only without counts, B2b Node2Vec, B1 MLP, new model names. | Sơn (task 1) | `embeddings.py`, `notebooks/baselines.ipynb`, `results/baselines.csv`, etc. | Done |
 | **Minh** | **Relation ablation (LR):** each of the 6 relations alone and left out. | None | `notebooks/relations.ipynb`, `results/relations.csv`, etc. | |
 | | **Error analysis:** content-only vs. graph-only vs. fusion. | Đại (fair baseline settings) | `notebooks/errors.ipynb`, short findings for the slides, etc. | |
-| **Phúc** | **Reproduce published methods:** official RGT, then BotHP, then the best one on our split. | None (own Colab setup) | `notebooks/reproduce.ipynb`, `results/reproduce.csv`, related notebooks and run logs, etc. | |
+| **Phúc** | **Reproduce published methods:** official RGT, then BotHP, then the best one on our split. | None (own Colab setup) | `notebooks/reproduce.ipynb`, `results/reproduce.csv`, related notebooks and run logs, etc. | Done |
 | **Tuấn** | **Literature table:** check published MGTAB results in the source papers. | None | `notes/sota-mgtab.md`, etc. | |
 | | **Slides for Progress Review 2**, with every number verified. | Đại, Minh, Phúc, Sơn, Tuấn (literature table) | slides | |
 | **Quyền** | **Document:** update the midterm review. | Đại, Minh, Phúc, Sơn, Tuấn (literature table) | `midterm-review-2.docx` | |
