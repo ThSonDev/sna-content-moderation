@@ -1,0 +1,5 @@
+method,split,relations,eval_set,runs,accuracy,accuracy_std,macro_f1,macro_f1_std,binary_f1,binary_f1_std,pr_auc,pr_auc_std,note
+BotHP (final epoch),"BotHP process.py: random 70/20/10, seed 0","follower, friend",BotHP test_mask (20% block),5,0.9101,0.0014,0.8833,0.0027,0.8273,0.0046,0.8869,0.0038,"argmax prediction (threshold 0.5, not tuned)"
+BotHP (early-stopping epoch),"BotHP process.py: random 70/20/10, seed 0","follower, friend",BotHP test_mask (20% block),5,0.9102,0.0012,0.884,0.0021,0.8289,0.0035,0.8878,0.0034,"argmax prediction (threshold 0.5, not tuned)"
+BotHP (final epoch),"ours: split(), seed 42","follower, friend",our validation (15%),5,0.9016,0.0022,0.8726,0.0025,0.8119,0.0036,0.8729,0.0061,"argmax prediction (threshold 0.5, not tuned)"
+BotHP (early-stopping epoch),"ours: split(), seed 42","follower, friend",our validation (15%),5,0.9088,0.0033,0.8831,0.0044,0.8284,0.0068,0.8783,0.0073,"argmax prediction (threshold 0.5, not tuned)"
