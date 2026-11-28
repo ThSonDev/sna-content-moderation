@@ -15,8 +15,8 @@ guide its design.
 |---|---|---|---|---|
 | **Sơn** | **1. PyTorch environment for the team.** PyTorch Geometric and pyg-lib (Node2Vec needs it) in the setup. Tested locally; the Colab test is still to do. | None | `requirements.txt`, `install_pyg.py`, `notebooks/template.ipynb`, `README.md` | Done |
 | | **2. Shared code.** `feature_groups` gives P, C (4 profile counts), T and G (28 computed graph features) separately. `evaluate` also returns accuracy. | None | `features.py`, `mgtab.py` | Done |
-| | **3. Models.** Add Node2Vec (G-emb) to P1. | Đại (Node2Vec code) | `notebooks/p1.ipynb`, `results/`, etc. | |
-| | **4. Models.** P2 RGCN and its MLP control (A3). | Minh (ablation, error analysis) | `notebooks/p2.ipynb`, `results/`, etc. | |
+| | **3. Models.** Add Node2Vec (G-emb) to P1. | Đại (Node2Vec code) | `notebooks/p1.ipynb`, `results/`, etc. | Done |
+| | **4. Models.** P2 RGCN and its MLP control (A3). | Minh (ablation, error analysis) | `notebooks/p2.ipynb`, `results/`, etc. | Done |
 | **Đại** | **Finish all baselines:** fair baseline, graph-only without counts, B2b Node2Vec, B1 MLP, new model names. | Sơn (task 1) | `embeddings.py`, `notebooks/baselines.ipynb`, `results/baselines.csv`, etc. | Done |
 | **Minh** | **Relation ablation (LR):** each of the 6 relations alone and left out. | None | `notebooks/relations.ipynb`, `results/relations.csv`, etc. | Done |
 | | **Error analysis:** content-only vs. graph-only vs. fusion. | Đại (fair baseline settings) | `notebooks/errors.ipynb`, short findings for the slides, etc. | Done |
